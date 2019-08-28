@@ -1,16 +1,30 @@
+import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import {Provider} from './src/context/BlogContext';
+import IndexScreen from './src/screens/IndexScreen';
+import ShowScreen from './src/screens/ShowScreen';
+import CreateScreen from './src/screens/CreateScreen';
+import EditScreen from './src/screens/EditScreen';
 
-import SearchScreen from './src/screens/SearchScreen';
-import ResultsShowScreen from './src/screens/ResultsShowScreen';
 const navigator=createStackNavigator({
-      SearchScreen:SearchScreen,
-        ResultsShowScreen:ResultsShowScreen
+      Index:IndexScreen,
+    Show:ShowScreen,
+    Create:CreateScreen,
+        Edit:EditScreen
+
 } ,{
-    initialRouteName: 'SearchScreen',
+    initialRouteName: 'Index',
         defaultNavigationOptions: {
-        title: 'SearchMeal'
+        title: 'Blog'
     }
 }
 );
 
-export default createAppContainer(navigator);
+const App= createAppContainer(navigator);
+
+export default ()=>{
+
+    return  <Provider>
+    <App/>
+    </Provider>
+};
